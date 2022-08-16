@@ -1,0 +1,18 @@
+version: "3"
+services:
+  python:
+    build: ./python
+    ports:
+      - "8008:8888"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./python/scripts:/JupyterLab
+  selenium:
+    build: ./selenium
+    shm_size: 4gb
+    ports:
+      - 4444:4444
+      - 5900:5900
+    volumes:
+      - /dev/shm:/dev/shm
